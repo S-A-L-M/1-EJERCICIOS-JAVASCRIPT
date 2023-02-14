@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Array Forms Website </title>
+    <link rel="stylesheet" href="CSS/formulario.css" href="JS/formulario.js"
+
+    <!-- GOOGLE FONTs -->
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <!-- ANIMATE CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+</head>
+
+<body>
+
+    <div class="content">
+
+        <h1 class="logo">Formulario <span>Arrays</span></h1>
+
+        <div class="contact-wrapper animated bounceInUp">
+            <div class="contact-form">
+                <h3>Registro</h3>
+                <form action="">
+                    <p>
+                        <!---TEXTO PARA INSERTAR DATO DE ID-->
+                        <label>ID</label>
+                        <input type="text" name="fullname" required placeholder="Ejem: 1" id="id"  class="form-control">
+                    </p>
+
+                    <p>
+                        <!---TEXTO PARA INSERTAR DATO DE NOMBRE-->
+                        <label>Name</label>
+                        <input type="text" name="fullname" placeholder="Ejem: Juan" id="nombre" required
+                            class="form-control">
+                        <span="barra"></span>
+
+                    </p>
+                    
+                    <!---BOTON PARA AGREGAR DATO-->
+                    <p class="block">
+                        <button id="boton" class="btn btn-success" type="reset" onclick="capturar();">Agregar</button>
+                    </p>
+
+                    <!---BOTON PARA EXPANDIR BUSQUEDA DE DATO-->
+                    <p class="block">
+                        <button id="boton5" class="btn-btn-success" onclick="mostrarBoton();" type="reset">Necesito buscar un Dato</button>
+                    </p>
+
+                    <p>
+                        <!---TEXTO PARA INSERTAR UN DATO EN UNA BUSQUEDA-->
+                        <label Ingrese un ID a Buscar></label>
+                        <label Busqueda ID style="display: none;"></label>
+                        <input type="text" name="fullname" style="display: none;" placeholder="Ingrese un ID..." id="id1"
+                            required class="form-control">
+                    </p>
+
+                    <!---BOTON PARA BUSCAR DATO-->
+                    <p class="block">
+                        <button id="boton2" style="display: none;" class="btn btn-success" type="reset">Buscar</button>
+
+                                     
+                    </p>
+                             
+                    <!---BOTON PARA ELIMINAR EL PRIMERA DATO-->
+                    <p class="block">
+                        <button id="boton3" style="display: none;" class="btn btn-success" type="reset">E1</button>
+                    </p>
+
+                    <!---BOTON PARA ELIMINAR EL ULTIMO DATO-->
+                    <p class="block">
+                        <button id="boton4" style="display: none;" class="btn btn-success" type="reset">EU</button>
+                    </p>
+
+                    <!---BOTON PARA ELIMINAR ALGUN DATO ESPECIFICO-->
+                    <p class="block">
+                        <button id="boton5" style="display: none;" class="btn btn-success" type="reset">EES</button>
+                    </p>
+
+
+
+
+
+
+                </form>
+            </div>
+            <div class="container">
+                <table class="table" id="tabla">
+                    <thread class="thread-inverse">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Opciones</th>
+                            
+
+                        </tr>
+                    </thread>
+                    <tbody id="addrow">
+
+                        </tbody>
+
+                </table>
+                
+            </div>
+
+            <div class="contact-info">
+                <h4>More Info</h4>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> dirección falsa</li>
+                    <li><i class="fas fa-phone"></i> (numero falso)</li>
+                    <li><i class="fas fa-envelope-open-text"></i>user@fue.co</li>
+                </ul>
+                <p>Rellena el Campo disponible antes de manipular el dato</p>
+                <p>Esto es una etiqueta P</p>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        function capturar() {
+            console.log("Capturado");
+            function Persona(id, nombre) {
+                this.id = id;
+                this.nombre = nombre;
+
+            }
+            var nombreCapturar = document.getElementById("nombre").value;
+            var idCapturar = document.getElementById("id").value;
+
+            nuevoSujeto = new Persona(nombreCapturar, idCapturar);
+            console.log(nuevoSujeto);
+            agregar();
+
+        }
+        var baseDatos = [];
+        var newrow = "";
+        function agregar() {
+            
+            baseDatos.push(nuevoSujeto);
+            console.log(baseDatos);
+           // document.getElementById("tabla").innerHTML += '<tbody><td>' + nuevoSujeto.nombre + '</td><td>' + nuevoSujeto.id + '</td></tbody>';
+            newrow += `<td>${ nuevoSujeto.nombre}</td>
+        <td>${nuevoSujeto.id}</td>
+        <td><button id="botonActualizar"class="btn btn-primary">actualizar</a></button>
+              <td><button id="botonEliminar" class="btn btn-danger">Eliminar</a></button>`;
+              document.getElementById("addrow").innerHTML += newrow;
+        }
+
+
+    
+
+
+    </script>
+    <script>
+        var btn_1 = document.getElementById('boton');
+        var btn_2 = document.getElementById('id1');
+        var btn_3 = document.getElementById('boton2');
+        var btn_4 = document.getElementById('boton3');
+        var btn_5 = document.getElementById('boton4');
+        var btn_6 = document.getElementById('boton5');
+
+
+
+        function mostrarBoton() {
+            btn_2.style.display = 'inline';
+            btn_1.style.display = 'inline';
+            btn_3.style.display = 'inline';
+            btn_4.style.display = 'inline';
+            btn_5.style.display = 'inline';
+            btn_6.style.display = 'inline';
+            
+        }
+    </script>
+ <script>
+    
+ </script>
+
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>Principal Main </title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">ADSO 3 WorkSpace</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="formulario-index.html">Tablas-Formulario</a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <h1>CALCULADORA</h1>
+    <P>1#
+      <!---Agrego casillas de textos, valor, el tipo -->
+    <input type="text" id="n1" placeholder="Inserte un Numero">
+    <br><br/></P>
+    <P>2#
+<input type="text" id="n2" placeholder="Inserte otro Numero">
+    <br><br/></P>
+   
+<!---Agrego butonos con su respectiva ID, valor el tipo -->
+
+<button id="suma">+</button>
+<button id="resta">-</button>
+<button id="multiplicacion">*</button>
+<button id="division">/</button>
+<button id="calcular">Calcular</button>
+<br><br/> 
+<!----representamos la salida de un cálculo o proceso-->
+<output id="r"></output> 
+<br><br/> 
+<script>
+    let op;
+
+    //Agrego un Seleccionador de Boton a Cada Rama de la matemática con su respectiva representación en comillas
+    document.querySelector('#suma').addEventListener('click', () =>{
+        op = '+';
+    });
+    document.querySelector('#resta').addEventListener('click', () =>{
+        op = '-';
+    });
+    document.querySelector('#multiplicacion').addEventListener('click', () =>{
+        op = '*';
+    });
+    document.querySelector('#division').addEventListener('click', () =>{
+        op = '/';
+    });
+    //Agrego otro Seleccionador de Boton Calcular
+     //Agrego Condicionales para Representar cualquier caso y su representación en valores constantes denominados N1 Y N2
+         //Constante denominada n1 y n2 va tomar valores enteros de tipo seleccionador
+                 //const op = document.querySelector('#op').value;
+    document.querySelector('#calcular').addEventListener('click', () =>{
+        const n1 = parseInt(document.querySelector('#n1').value);
+        const n2 = parseInt(document.querySelector('#n2').value);
+        let r;
+        if(op == '+'){
+            r = n1 + n2;
+        }else if( op == '-'){
+            r = n1 - n2;
+        }else if(op == '*'){
+            r = n1 * n2;
+        }else if(op == '/'){
+            r = n1 / n2;
+        }
+        document.querySelector('#r').innerHTML = r;
+    });
+
+</script>
+    <button id="popoverButton" type="button" class="btn btn-primary btn-lg" class="btn btn-lg btn-danger" data-bs-toggle="popover" title="ESM in Browser" data-bs-content="Bang!">Custom popover</button>
+
+    <script async src="https://cdn.jsdelivr.net/npm/es-module-shims@1/dist/es-module-shims.min.js" crossorigin="anonymous"></script>
+    <script type="importmap">
+    {
+      "imports": {
+        "@popperjs/core": "https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js",
+        "bootstrap": "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.esm.min.js"
+      }
+    }
+    </script>
+    <script type="module">
+      import * as bootstrap from 'bootstrap'
+
+      new bootstrap.Popover(document.getElementById('popoverButton'))
+    </script>
+  </body>
+</html>

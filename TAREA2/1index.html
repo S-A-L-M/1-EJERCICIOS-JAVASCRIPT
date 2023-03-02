@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Reorganización de datos</title>
+ <style>
+  /* Estilos para la tabla */
+  table {
+   border-collapse: collapse;
+   width: 100%;
+  }
+  th, td {
+   padding: 8px;
+   text-align: left;
+   border-bottom: 1px solid #ddd;
+  }
+  th {
+   background-color: #f2f2f2;
+   color: #333;
+  }
+  tr:hover {
+   background-color: #f5f5f5;
+  }
+
+  /* Estilos para el formulario */
+  form {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+  }
+  fieldset {
+   padding: 10px;
+   margin-bottom: 20px;
+  }
+  input[type="text"], input[type="number"] {
+   padding: 8px;
+   margin-right: 10px;
+   border-radius: 4px;
+   border: 1px solid #ccc;
+   font-size: 16px;
+  }
+  button {
+   background-color: #4CAF50;
+   color: white;
+   border: none;
+   border-radius: 4px;
+   padding: 10px;
+   font-size: 16px;
+   cursor: pointer;
+  }
+ </style>
+</head>
+<body>
+ <h1>Reorganización de datos</h1>
+
+ <form>
+  <fieldset>
+   <legend>Agregar valores</legend>
+   <label for="marca">Marca:</label>
+   <select id="marca">
+    <option value="opel">Opel</option>
+    <option value="citroen">Citroën</option>
+   </select>
+   <br>
+   <label for="nombre">Nombre:</label>
+   <input type="text" id="nombre">
+   <label for="posicion">Posición:</label>
+   <input type="number" id="posicion">
+   <button type="button" id="agregar">Agregar</button>
+  </fieldset>
+
+  <fieldset>
+   <legend>Actualizar valores</legend>
+   <label for="marca-actualizar">Marca:</label>
+   <select id="marca-actualizar">
+    <option value="opel">Opel</option>
+    <option value="citroen">Citroën</option>
+   </select>
+   <br>
+   <label for="nombre-actualizar">Nombre:</label>
+   <input type="text" id="nombre-actualizar">
+   <label for="posicion-actualizar">Posición:</label>
+   <input type="number" id="posicion-actualizar">
+   <button type="button" id="actualizar">Actualizar</button>
+  </fieldset>
+
+  <fieldset>
+   <legend>Eliminar valores</legend>
+   <label for="marca-eliminar">Marca:</label>
+   <select id="marca-eliminar">
+    <option value="opel">Opel</option>
+    <option value="citroen">Citroën</option>
+   </select>
+   <br>
+   <label for="posicion-eliminar">Posición:</label>
+   <input type="number" id="posicion-eliminar">
+   <button type="button" id="eliminar">Eliminar</button>
+  </fieldset>
+ </form>
+
+ <table id="tabla">
+  <thead>
+   <tr>
+    <th>Marca</th>
+    <th>Nombre</th>
+    <th>Posición</th>
+   </tr>
+  </thead>
+  <tbody>
+   <tr>
+    <td>Opel</td>
+    <td>Astra</td>
+    <td>1</td>
+   </tr>
+   <tr>
+    <td>Opel</td>
+    <td>Corsa</td>
+    <td>2</td>
+   </tr>
+   <tr>
+    <td>Opel</td>
+    <td>Mokka</td>
+    <td>3</td>
+   </tr>
+   <tr>
+    <td>Opel</td>
+    <td>Insignia</td>
+    <td>4</td>
+   </tr>
+   <tr>
+    <td>Opel</td>
+    <td>Crossland</td>
+    <td>5</td>
+   </tr>
+   <tr>
+    <td>Opel</td>
+    <td>Grandland</td>
+    <td>6</td>
+   </tr>
+   <tr>
+    <td>Citroën</td>
+    <td>C3</td>
+    <td>1</td>
+   </tr>
+   <tr>
+    <td>Citroën</td>
+    <td>C4 Cactus</td>
+    <td>2</td>
+   </tr>
+   <tr>
+    <td>Citroën</td>
+    <td>C5 Aircross</td>
+    <td>3</td>
+   </tr>
+   <tr>
+    <td>Citroën</td>
+    <td>Spacetourer</td>
+    <td>4</td>
+   </tr>
+   <tr>
+    <td>Citroën</td>
+    <td>C4 Picasso</td>
+    <td>5</td>
+   </tr>
+   <tr>
+    <td>Citroën</td>
+    <td>C3 Aircross</td>
+    <td>6</td>
+   </tr>
+  </tbody>
+ </table>
+
+ <script>
+  // Función para actualizar la tabla con los datos actuales del arreglo
+  function actualizarTabla() {
+   // Obtener la tabla
+   let tabla = document.getElementById("tabla");
+   // Obtener el cuerpo de la tabla
+   let tbody = tabla.getElementsByTagName("tbody")[0];
+   // Limpiar el cuerpo de la tabla
+   tbody.innerHTML = "";
+   // Iterar sobre los datos y agregar cada fila a la tabla
+   for (let i = 0; i < datos.length; i++) {
+    let fila = "<tr>";
+    fila += "<td>" + datos[i].marca + "</td>";
+    fila += "<td>" + datos[i].nombre + "</td>";
+    fila += "<td>" + datos[i].posicion + "</td>";
+    fila += "</tr>";
+    tbody.innerHTML += fila;
+   }
+  }
+
+  // Arreglo con los datos de los vehículos
+  let datos = [
+   {marca: "Opel", nombre: "Astra", posicion: 1},
+   {marca: "Opel", nombre: "Corsa", posicion: 2},
+   {marca: "Opel", nombre: "Mokka", posicion: 3},
+  
+   {marca: "Opel", nombre: "Insignia", posicion: 4},
+   {marca: "Opel", nombre: "Crossland", posicion: 5},
+   {marca: "Opel", nombre: "Grandland", posicion: 6},
+   {marca: "Citroën", nombre: "C3", posicion: 7},
+   {marca: "Citroën", nombre: "C4 Cactus", posicion: 8},
+   {marca: "Citroën", nombre: "C5 Aircross", posicion: 9},
+   {marca: "Citroën", nombre: "Spacetourer", posicion: 10},
+   {marca: "Citroën", nombre: "C4 Picasso", posicion: 11},
+   {marca: "Citroën", nombre: "C3 Aircross", posicion: 12},
+  ];
+
+  // Función para agregar un nuevo vehículo al arreglo de datos
+  function agregarVehiculo() {
+   // Obtener los valores ingresados en el formulario
+   let marca = document.getElementById("marca").value;
+   let nombre = document.getElementById("nombre").value;
+   let posicion = parseInt(document.getElementById("posicion").value);
+   // Validar que los valores ingresados sean válidos
+   if (marca === "" || nombre === "" || isNaN(posicion)) {
+    alert("Por favor ingrese valores válidos");
+    return;
+   }
+   // Validar que la posición ingresada sea válida
+   if (posicion < 1 || posicion > datos.length + 1) {
+    alert("Por favor ingrese una posición válida");
+    return;
+   }
+   // Agregar el nuevo vehículo al arreglo de datos
+   datos.splice(posicion - 1, 0, {marca: marca, nombre: nombre, posicion: posicion});
+   // Actualizar la tabla con los datos actuales
+   actualizarTabla();
+   // Limpiar el formulario
+   document.getElementById("formulario").reset();
+  }
+
+  // Función para actualizar los datos de un vehículo existente en el arreglo
+  function actualizarVehiculo() {
+   // Obtener los valores ingresados en el formulario
+   let marca = document.getElementById("marca").value;
+   let nombre = document.getElementById("nombre").value;
+   let posicion = parseInt(document.getElementById("posicion").value);
+   // Validar que los valores ingresados sean válidos
+   if (marca === "" || nombre === "" || isNaN(posicion)) {
+    alert("Por favor ingrese valores válidos");
+    return;
+   }
+   // Validar que la posición ingresada sea válida
+   if (posicion < 1 || posicion > datos.length) {
+    alert("Por favor ingrese una posición válida");
+    return;
+   }
+   // Actualizar los datos del vehículo en el arreglo
+   datos[posicion - 1].marca = marca;
+   datos[posicion - 1].nombre = nombre;
+   datos[posicion - 1].posicion = posicion;
+   // Actualizar la tabla con los datos actuales
+   actualizarTabla();
+   // Limpiar el formulario
+   document.getElementById("formulario").reset();
+  }
+
+ // Función para eliminar un vehículo del arreglo
+ function eliminarVehiculo() {
+  // Obtener la posición del vehículo a eliminar
+  let posicion = parseInt(document.getElementById("posicion").value);
+  // Validar que la posición ingresada sea válida
+  if (posicion < 1 || posicion > datos.length) {
+   alert("Por favor ingrese una posición válida");
+   return;
+  }
+  // Eliminar el vehículo del arreglo
+  datos.splice(posicion - 1, 1);
+  // Actualizar la tabla con los datos actuales
+  actualizarTabla();
+  // Limpiar el formulario
+  document.getElementById("formulario").reset();
+ }
+
+ // Función para actualizar la tabla con los datos actuales
+ function actualizarTabla() {
+  // Obtener la referencia a la tabla
+  let tabla = document.getElementById("tabla");
+  // Eliminar las filas existentes de la tabla
+  while (tabla.rows.length > 1) {
+   tabla.deleteRow(-1);
+  }
+  // Crear nuevas filas para cada vehículo en el arreglo
+  for (let i = 0; i < datos.length; i++) {
+   let fila = tabla.insertRow(-1);
+   let celdaMarca = fila.insertCell(0);
+   let celdaNombre = fila.insertCell(1);
+   let celdaPosicion = fila.insertCell(2);
+   celdaMarca.innerHTML = datos[i].marca;
+   celdaNombre.innerHTML = datos[i].nombre;
+   celdaPosicion.innerHTML = datos[i].posicion;
+  }
+ }
+
+ // Agregar los event listeners para los botones del formulario
+ document.getElementById("agregar").addEventListener("click", agregarVehiculo);
+ document.getElementById("actualizar").addEventListener("click", actualizarVehiculo);
+ document.getElementById("eliminar").addEventListener("click", eliminarVehiculo);
+
+ // Actualizar la tabla con los datos iniciales
+ actualizarTabla();
+</script>
+</body>
+</html>
